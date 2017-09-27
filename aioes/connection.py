@@ -20,6 +20,7 @@ class Connection:
     def __init__(self, endpoint, *, loop, verify_ssl=True, connector=None):
         self._endpoint = endpoint
         self._session = aiohttp.ClientSession(
+            headers={'Content-Type': 'application/x-ndjson'}
             # limit number of connections?
             connector=connector or aiohttp.TCPConnector(
                 use_dns_cache=True,
