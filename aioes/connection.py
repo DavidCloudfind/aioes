@@ -18,12 +18,13 @@ class Connection:
     """
 
     def __init__(self, endpoint, *, loop, verify_ssl=True, connector=None):
+        headers = {'Content-Type': 'application/x-ndjson'}
         self._endpoint = endpoint
-        self._session = aiohttp.ClientSession(headers={'Content-Type': 'application/x-ndjson'},
+        self._session = aiohttp.ClientSession(headers=headers,
                                               connector=connector or aiohttp.TCPConnector(
-                                              use_dns_cache=True,
-                                              loop=loop,
-                                              verify_ssl=verify_ssl),
+                                                  use_dns_cache=True,
+                                                  loop=loop,
+                                                  verify_ssl=verify_ssl),
                                               loop=loop)
         self._base_url = yarl.URL('{0.scheme}://{0.host}:{0.port}/'
                                   .format(endpoint))
