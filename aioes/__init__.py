@@ -10,7 +10,7 @@ __all__ = ('Elasticsearch', 'ConnectionError', 'NotFoundError',
            'ConflictError', 'RequestError', 'TransportError')
 
 
-__version__ = '0.7.2'
+__version__ = '0.7.3'
 
 version = __version__ + ' , Python ' + sys.version
 
